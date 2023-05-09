@@ -8,16 +8,13 @@ Mocked_data = [
 	{ id: "007", spareName: "Head lamp", quantity: "8" },
 ];
 
-const barChartContainer = d3
-	.select("div")
-	.classed("barContainer", true)
-	.style("border", "2px solid blue");
+const barChartContainer = d3.select("svg").classed("barContainer", true);
 
 const bars = barChartContainer
 	.selectAll(".bar")
 	.data(Mocked_data)
 	.enter()
-	.append("div")
+	.append("rect")
 	.classed("bar", true)
-	.style("width", "50px")
-	.style("height", (data) => data.quantity * 5 + "px");
+	.attr("width", 50)
+	.attr("height", (data) => data.quantity * 5);
