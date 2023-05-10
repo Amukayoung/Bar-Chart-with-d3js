@@ -10,11 +10,20 @@ Mocked_data = [
 
 const barChartContainer = d3.select("svg").classed("barContainer", true);
 
+const xScale = d3
+	.scaleBand()
+	.domain(Mocked_data.map((data) => data.spareName))
+	.rangeRound([0, 400])
+	.padding(0.2);
+const yScale = d3.scaleLinear().domain([0, 50]).range([250, 0]);
+
 const bars = barChartContainer
 	.selectAll(".bar")
 	.data(Mocked_data)
 	.enter()
 	.append("rect")
 	.classed("bar", true)
-	.attr("width", 50)
-	.attr("height", (data) => data.quantity * 5);
+	.attr("width", xScale.bandwidth())
+	.attr("height", (data) => 250 - yScale(data.quantity))
+	.attr("x", (data) => xScale(data.spareName))
+	.attr("y", (data) => yScale(data.quantity));
