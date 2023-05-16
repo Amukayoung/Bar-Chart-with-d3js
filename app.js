@@ -7,9 +7,6 @@ Mocked_data = [
 	{ id: "006", spareName: "Clutch", quantity: "20" },
 	{ id: "007", spareName: "Head lamp", quantity: "8" },
 ];
-console.log("====================================");
-console.log(d3);
-console.log("====================================");
 
 const barChartContainer = d3.select("svg").classed("barContainer", true);
 
